@@ -1,2 +1,2 @@
 # SDN-Traffic-Prediction
-Predict Traffic Generation In SDN Network Using Comnetsemu
+Predict Traffic Pattern In SDN Network Using Comnetsemu
