@@ -34,6 +34,8 @@ def train_and_evaluate_model(input_csv):
     plt.xlabel("Actual Traffic Volume (Total Bytes)")
     plt.ylabel("Predicted Traffic Volume (Total Bytes)")
     plt.title("Actual vs Predicted Traffic Volume (Gradient Boosting)")
+    # Save the figure before showing it
+    plt.savefig("actual_vs_predicted_gradient.png", dpi=300, bbox_inches='tight') 
     plt.show()
 
     # Return the model for prediction

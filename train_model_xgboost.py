@@ -33,7 +33,9 @@ def train_and_evaluate_model(input_csv):
     plt.scatter(y_test, y_pred)
     plt.xlabel("Actual Traffic Volume (Total Bytes)")
     plt.ylabel("Predicted Traffic Volume (Total Bytes)")
-    plt.title("Actual vs Predicted Traffic Volume")
+    plt.title("Actual vs Predicted Traffic Volume XGBoost")
+    # Save the figure before showing it
+    plt.savefig("actual_vs_predicted_xgboost.png", dpi=300, bbox_inches='tight') 
     plt.show()
 
     # Predict traffic volume for new data
