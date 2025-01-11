@@ -30,12 +30,28 @@ def train_and_evaluate_model(input_csv):
     print(f"Random Forest - R^2 Score: {r2_rf}")
 
     # Plot actual vs predicted values
-    plt.scatter(y_test, y_pred_rf)
+    plt.figure(figsize=(6, 6))
+    plt.scatter(y_test, y_pred_rf, alpha=0.7, label="Predictions")
+    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 
+              color="blue", linestyle="--", linewidth=2, label="Ideal Prediction")
     plt.xlabel("Actual Traffic Volume (Total Bytes)")
     plt.ylabel("Predicted Traffic Volume (Total Bytes)")
     plt.title("Actual vs Predicted Traffic Volume (Forest)")
-    # Save the figure before showing it
-    plt.savefig("actual_vs_predicted_forest.png", dpi=300, bbox_inches='tight') 
+    plt.legend()
+    plt.grid(True)
+    plt.savefig("actual_vs_predicted_forest.png", dpi=300, bbox_inches='tight')
+    plt.show()
+
+    # Plot predicted vs actual traces in the time domain
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(len(y_test)), y_test, label="Actual Traffic Volume", color="green", alpha=0.7)
+    plt.plot(range(len(y_test)), y_pred_rf, label="Predicted Traffic Volume", color="orange", alpha=0.7)
+    plt.xlabel("Time Index")
+    plt.ylabel("Traffic Volume (Total Bytes)")
+    plt.title("Time-Domain Analysis of Actual vs Predicted Traffic Volume (Forest)")
+    plt.legend()
+    plt.grid(True)
+    plt.savefig("time_domain_actual_vs_predicted_forest.png", dpi=300, bbox_inches='tight')
     plt.show()
 
     return rf_model, X_test, y_test
